@@ -2,8 +2,12 @@ This folder contains raw data and the scripts necessary to appropriately process
 
 It contains processing for:
 
-Codon bias data\n
-FoldIndex data/n
-GO Term data/n
-Tissue Expression data/n
-Protein Expression data/n
+Codon bias data
+
+FoldIndex data
+
+GO Term data
+
+Tissue Expression data
+
+Protein Expression data
