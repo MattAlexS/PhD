@@ -6,8 +6,10 @@ import random
 import os
 
 aminos = {'K':2,'N':2,'T':4,'R':6,'S':6,'I':3,'Q':2,'H':2,'P':4,'L':6,'E':2,'D':2,'A':4,'G':4,'V':4,'Stop':3,'Y':2,'C':2,'F':2}
+aminosNonStop = {'K':2,'N':2,'T':4,'R':6,'S':6,'I':3,'Q':2,'H':2,'P':4,'L':6,'E':2,'D':2,'A':4,'G':4,'V':4,'Y':2,'C':2,'F':2}
 
 codons = ['K','N','K','N','T','T','T','T','R','S','R','S','I','I','I','Q','H','Q','H','P','P','P','P','R','R','R','R','L','L','L','L','E','D','E','D','A','A','A','A','G','G','G','G','V','V','V','V','Stop','Y','Stop','Y','S','S','S','S','Stop','C','C','L','F','L','F']
+codonsNonStop = ['K','N','K','N','T','T','T','T','R','S','R','S','I','I','I','Q','H','Q','H','P','P','P','P','R','R','R','R','L','L','L','L','E','D','E','D','A','A','A','A','G','G','G','G','V','V','V','V','Y','Y','S','S','S','S','C','C','L','F','L','F']
 
 #Parameters
 ecosize = 100
@@ -15,9 +17,9 @@ startsize = 30
 time = 150
 mpg = 50
 rmr = 5
-minDist = 1.5
+minDist = [4.5,4.0,3.75,3.5,3.25,3.00,2.75,2.5,2.25,2.00]
 random.seed(611)
-dimension = [aminos, codons]
+dimension = [aminosNonStop, codonsNonStop]
 
 
 #hyperplane toggle
@@ -63,19 +65,18 @@ def rand_gen(dimension):
     return(product)
 
 
-os.chdir("/Users/matthew/Desktop/Algorithm Initialization/4d-4to4PointPackSpread")
-for d in range(30,1,-1):
+os.chdir("/Users/matthew/Documents/Codon Usage Project/Clean Attempt/Point Packings/")
+for d in minDist:
     print(d)
-    minDist = d/2.0 
-    filename = str(int(dimension[1])) + "to" + str(int(dimension[2])) + "minD" + str(minDist) + ".csv"
+    filename =  "CodonAnchorsMinD" + str(minDist) + ".csv"
     #initialize
     ecosystem = []
     for i in range(ecosize):
         mom = []
         dad = []
         for x in range(startsize):
-            mom.append(uniform_gen(dimension))
-            dad.append(uniform_gen(dimension))
+            mom.append(rand_gen(dimension))
+            dad.append(rand_gen(dimension))
         ecosystem.append(ConwayCross(minDist, mom, dad))
 
     print('Intialized')
@@ -89,7 +90,7 @@ for d in range(30,1,-1):
             dad = ecosystem[random.randint(0,ecosize-1)]
             mutation = []
             for i in range(rmr):
-                mutation.append(uniform_gen(dimension))
+                mutation.append(rand_gen(dimension))
             newgen.append(ConwayCross(minDist, mom, dad, mutation))
         for child in newgen:
             for individual in range(len(ecosystem)):
