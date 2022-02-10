@@ -1,4 +1,4 @@
-##Evolutionary point packer
+##Evolutionary Point Packer
 
 import numpy as np
 from HyperPlaneSampler import hyper_uniform
@@ -12,24 +12,56 @@ codons = ['K','N','K','N','T','T','T','T','R','S','R','S','I','I','I','Q','H','Q
 codonsNonStop = ['K','N','K','N','T','T','T','T','R','S','R','S','I','I','I','Q','H','Q','H','P','P','P','P','R','R','R','R','L','L','L','L','E','D','E','D','A','A','A','A','G','G','G','G','V','V','V','V','Y','Y','S','S','S','S','C','C','L','F','L','F']
 
 #Parameters
-ecosize = 100
-startsize = 30
-time = 150
-mpg = 50
-rmr = 5
-minDist = [4.5,4.0,3.75,3.5,3.25,3.00,2.75,2.5,2.25,2.00]
+ecosize = 100       #maximum population Size
+startsize = 30      #number of random points used to initialize a packing
+time = 150          #number of generations
+mpg = 50            #number of mating events each generation
+rmr = 5             #mutation rate
+minDist = [4.5,4.0,3.75,3.5,3.25,3.00,2.75,2.5,2.25,2.00] #List of minimum distances to use, creates a new packing and file for each.
 random.seed(611)
-dimension = [aminosNonStop, codonsNonStop]
 
+#The following lines can be used to toggle the domain to be packed
+#Ensure dimension is defined once
+dimension = [aminosNonStop, codonsNonStop]  #Hypersimplicial complex without STOP codons
+#dimension = [amino,codons]                 #Hypersimplicial complex including STOP codons
+#dimension = 6                              #Hyperplane in given number of dimensions (for single amino acid packings)
+#dimension = [4,-4.0,4.0]                   #Generic Space (4 dimensions from -4.0 to 4.0)
 
-#hyperplane toggle
+#rand_gen is the point generation function for generating a random point
+#Ensure only one of these function variants is active.
+#Use this in conjunction with the dimension to correctly specify the space you wish to pack
+#Hyperplane toggle
 """
 def rand_gen(dimension):
     return(hyper_uniform(dimension))
 """
+
+#Hypersimplicial Complex toggle
+def rand_gen(dimension):
+    product = []
+    holding = {}
+    planes = dimension[0]
+    layout = dimension[1]
+    for i in planes.keys():
+        holding[i] = hyper_uniform(planes[i])
+    for i in layout:
+        product.append(holding[i].pop())
+    return(product)
+
+#Generic Space toggle
+"""
+def rand_gen(dimension):
+    point = []
+    for i in range(dimension[0]):
+        point.append(random.uniform(dimension[1],dimension[2]))
+    return np.asarray(point)
+"""
+
+#Euclidean Distance
 def dist(p1, p2):
     out = np.linalg.norm(p1-p2)
     return out
+
 
 def ConwayCross(minDist, *argv):
     master = []
@@ -52,23 +84,10 @@ def ConwayCross(minDist, *argv):
     return(child)
         
 
-#hypersimplicial complex toggle
-def rand_gen(dimension):
-    product = []
-    holding = {}
-    planes = dimension[0]
-    layout = dimension[1]
-    for i in planes.keys():
-        holding[i] = hyper_uniform(planes[i])
-    for i in layout:
-        product.append(holding[i].pop())
-    return(product)
-
-
 os.chdir("/Users/matthew/Documents/Codon Usage Project/Clean Attempt/Point Packings/")
 for d in minDist:
     print(d)
-    filename =  "CodonAnchorsMinD" + str(minDist) + ".csv"
+    filename =  "CodonNonStopAnchorsMinD" + str(d) + ".csv"
     #initialize
     ecosystem = []
     for i in range(ecosize):
@@ -101,7 +120,6 @@ for d in minDist:
     print(len(ecosystem[0]))
 
     #write to file
-
     with open(filename, "w") as file:
         for i in ecosystem[0]:
             temp = []
