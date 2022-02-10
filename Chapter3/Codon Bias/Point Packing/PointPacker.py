@@ -83,8 +83,10 @@ def ConwayCross(minDist, *argv):
             child.append(i)
     return(child)
         
+#Target file location for point packings
+#os.mkdir("~/PointPackings")
+os.chdir("~/PointPackings")
 
-os.chdir("/Users/matthew/Documents/Codon Usage Project/Clean Attempt/Point Packings/")
 for d in distList:
     print(d)
     filename =  "CodonNonStopAnchorsMinD" + str(d)
