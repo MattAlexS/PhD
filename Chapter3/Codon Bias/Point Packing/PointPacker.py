@@ -17,7 +17,7 @@ startsize = 30      #number of random points used to initialize a packing
 time = 150          #number of generations
 mpg = 50            #number of mating events each generation
 rmr = 5             #mutation rate
-minDist = [4.5,4.0,3.75,3.5,3.25,3.00,2.75,2.5,2.25,2.00] #List of minimum distances to use, creates a new packing and file for each.
+distList = [4.5,4.0,3.75,3.5,3.25,3.00,2.75,2.5,2.25,2.00] #List of minimum distances to use, creates a new packing and file for each.
 random.seed(611)
 
 #The following lines can be used to toggle the domain to be packed
@@ -33,7 +33,7 @@ dimension = [aminosNonStop, codonsNonStop]  #Hypersimplicial complex without STO
 #Hyperplane toggle
 """
 def rand_gen(dimension):
-    return(hyper_uniform(dimension))
+    return np.asarray(hyper_uniform(dimension))
 """
 
 #Hypersimplicial Complex toggle
@@ -46,7 +46,7 @@ def rand_gen(dimension):
         holding[i] = hyper_uniform(planes[i])
     for i in layout:
         product.append(holding[i].pop())
-    return(product)
+    return np.asarray(product)
 
 #Generic Space toggle
 """
@@ -85,9 +85,9 @@ def ConwayCross(minDist, *argv):
         
 
 os.chdir("/Users/matthew/Documents/Codon Usage Project/Clean Attempt/Point Packings/")
-for d in minDist:
+for d in distList:
     print(d)
-    filename =  "CodonNonStopAnchorsMinD" + str(d) + ".csv"
+    filename =  "CodonNonStopAnchorsMinD" + str(d)
     #initialize
     ecosystem = []
     for i in range(ecosize):
@@ -96,7 +96,7 @@ for d in minDist:
         for x in range(startsize):
             mom.append(rand_gen(dimension))
             dad.append(rand_gen(dimension))
-        ecosystem.append(ConwayCross(minDist, mom, dad))
+        ecosystem.append(ConwayCross(d, mom, dad))
 
     print('Intialized')
 
@@ -110,7 +110,7 @@ for d in minDist:
             mutation = []
             for i in range(rmr):
                 mutation.append(rand_gen(dimension))
-            newgen.append(ConwayCross(minDist, mom, dad, mutation))
+            newgen.append(ConwayCross(d, mom, dad, mutation))
         for child in newgen:
             for individual in range(len(ecosystem)):
                 if len(child) > len(ecosystem[individual]):
@@ -118,12 +118,12 @@ for d in minDist:
                     break
 
     print(len(ecosystem[0]))
+    filename = filename + "("  + str(len(ecosystem[0])) + ").csv"
 
     #write to file
     with open(filename, "w") as file:
-        for i in ecosystem[0]:
+        for point in ecosystem[0]:
             temp = []
-            for d in i:
-                temp.append(str(d))
-            line = ",".join(temp)
-            print(line, file = file)
+            for dim in point:
+                temp.append(str(dim))
+            print(",".join(temp), file = file)
