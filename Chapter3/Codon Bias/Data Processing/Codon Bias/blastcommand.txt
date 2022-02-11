@@ -1,5 +1,5 @@
-makeblastdb -in ~/blast/db/Keratinization_prot.fa -out "GOTestdb" -dbtype "prot"
+makeblastdb -in ~/blast/db/Human_prot.fa -out "HumanProtdb" -dbtype "prot"
 
 make sure blast database is in blast directory not in db dirrectory
 
-blastp -query ~/blast/db/Keratinization_prot.fa -db GOTestdb -out ~/blast/db/Keratinization_blast.csv -outfmt "10 qacc sacc pident qstart qend sstart send qseq"
+blastp -query ~/blast/db/Human_prot.fa -db HumanProtdb -out ~/blast/db/Human_blast.csv -outfmt "10 qacc sacc pident qstart qend sstart send qseq"
