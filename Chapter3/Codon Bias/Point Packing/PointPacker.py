@@ -27,6 +27,9 @@ dimension = [aminosNonStop, codonsNonStop]  #Hypersimplicial complex without STO
 #dimension = 6                              #Hyperplane in given number of dimensions (for single amino acid packings)
 #dimension = [4,-4.0,4.0]                   #Generic Space (4 dimensions from -4.0 to 4.0)
 
+#from data toggle
+#dimension = pd.read_csv("Human101.UNIQ.codon_bias.csv", index_col=0).astype(float)
+
 #rand_gen is the point generation function for generating a random point
 #Ensure only one of these function variants is active.
 #Use this in conjunction with the dimension to correctly specify the space you wish to pack
@@ -47,6 +50,12 @@ def rand_gen(dimension):
     for i in layout:
         product.append(holding[i].pop())
     return np.asarray(product)
+
+#Pack from Data
+"""
+def rand_gen(dimension):
+    return np.asarray(dimension.iloc[np.random.randint(0, dimension.shape[0])])
+"""
 
 #Generic Space toggle
 """
