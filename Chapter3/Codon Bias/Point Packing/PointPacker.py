@@ -1,6 +1,7 @@
 ##Evolutionary Point Packer
 
 import numpy as np
+import pandas as pd
 from HyperPlaneSampler import hyper_uniform
 import random
 import os
@@ -14,7 +15,7 @@ codonsNonStop = ['K','N','K','N','T','T','T','T','R','S','R','S','I','I','I','Q'
 #Parameters
 ecosize = 100       #maximum population Size
 startsize = 30      #number of random points used to initialize a packing
-time = 150          #number of generations
+time = 400          #number of generations
 mpg = 50            #number of mating events each generation
 rmr = 5             #mutation rate
 distList = [4.5,4.0,3.75,3.5,3.25,3.00,2.75,2.5,2.25,2.00] #List of minimum distances to use, creates a new packing and file for each.
@@ -22,13 +23,14 @@ random.seed(611)
 
 #The following lines can be used to toggle the domain to be packed
 #Ensure dimension is defined once
-dimension = [aminosNonStop, codonsNonStop]  #Hypersimplicial complex without STOP codons
+#dimension = [aminosNonStop, codonsNonStop]  #Hypersimplicial complex without STOP codons
 #dimension = [amino,codons]                 #Hypersimplicial complex including STOP codons
 #dimension = 6                              #Hyperplane in given number of dimensions (for single amino acid packings)
 #dimension = [4,-4.0,4.0]                   #Generic Space (4 dimensions from -4.0 to 4.0)
 
 #from data toggle
 #dimension = pd.read_csv("Human101.UNIQ.codon_bias.csv", index_col=0).astype(float)
+dimension = pd.read_csv("HumanTEcodonbias.csv", index_col = 1).drop(['Gene ID','UniProt ID','TAA(Stop)', 'TAG(Stop)','TGA(Stop)'], axis = 1).astype(float)
 
 #rand_gen is the point generation function for generating a random point
 #Ensure only one of these function variants is active.
@@ -40,6 +42,7 @@ def rand_gen(dimension):
 """
 
 #Hypersimplicial Complex toggle
+"""
 def rand_gen(dimension):
     product = []
     holding = {}
@@ -50,12 +53,12 @@ def rand_gen(dimension):
     for i in layout:
         product.append(holding[i].pop())
     return np.asarray(product)
-
-#Pack from Data
 """
+#Pack from Data
+
 def rand_gen(dimension):
     return np.asarray(dimension.iloc[np.random.randint(0, dimension.shape[0])])
-"""
+
 
 #Generic Space toggle
 """
@@ -93,12 +96,12 @@ def ConwayCross(minDist, *argv):
     return(child)
         
 #Target file location for point packings
-#os.mkdir("~/PointPackings")
-os.chdir("~/PointPackings")
+
+
 
 for d in distList:
     print(d)
-    filename =  "CodonNonStopAnchorsMinD" + str(d)
+    filename =  "CodonNonStopFromDataMinD" + str(d)
     #initialize
     ecosystem = []
     for i in range(ecosize):
