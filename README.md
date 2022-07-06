@@ -17,29 +17,10 @@ This is a pesonal repository used to structure my PhD thesis work and associated
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CHAPTER 3  -->
-## Analysis of Codon Bias Utilizing Anchor Clustering 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Requires Python 3.0+ 
-
+## Chapter 3 - Analysis of Codon Bias Utilizing Anchor Clustering 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
