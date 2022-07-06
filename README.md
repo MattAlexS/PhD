@@ -31,7 +31,7 @@ This is a pesonal repository used to structure my PhD thesis work and associated
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Proprietary and not subject for commercial or personal use. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
