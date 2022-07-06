@@ -7,6 +7,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+This is a pesonal repository used to structure my PhD thesis work and associated scripts required to generate figures for my publications. 
+
 <!-- CHAPTER 2 -->
 ## Chapter 2 - Random Point Generation Problems
 ![Alt text](Chapter2/3DSimplexPackingSizes.png "3D Simplex Packing Sizes")
