@@ -33,7 +33,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][https://github.com/MattAlexS/PhD/blob/main/Chapter2/3DSimplexPackingSizes.png]
+[![3D Simplex Packing Sizes ScreenShot][main/Chapter2/3DSimplexPackingSizes.png]
 
 Using Anchor Clustering to Analyse Codon Bias in the Human Genome 
 
