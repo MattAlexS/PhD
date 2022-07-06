@@ -1,45 +1,21 @@
-# PhD
+# PhD - Using Anchor Clustering to Analyse Codon Bias in the Human Genome 
 
 
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
 </details>
-
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![Alt text](Chapter2/3DSimplexPackingSizes.png "3D Simplex Packing Sizes")
 
-Using Anchor Clustering to Analyse Codon Bias in the Human Genome 
+<!-- CHAPTER 2 -->
+## Chapter 2 - Random Point Generation Problems
+![Alt text](Chapter2/3DSimplexPackingSizes.png "3D Simplex Packing Sizes")
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
+<!-- CHAPTER 3  -->
+## Analysis of Codon Bias Utilizing Anchor Clustering 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -81,7 +57,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - m.a.stoodley@gmail.com
+Matthew Stoodley - m.a.stoodley@gmail.com
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
