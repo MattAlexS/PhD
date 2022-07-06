@@ -47,7 +47,7 @@ Matthew Stoodley - m.a.stoodley@gmail.com
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Thank you to my advisors Dr. Steffen Graether and Dr. Ashlock
+Thank you to my advisors Dr. Steffen Graether and Dr. Daniel Ashlock
 
 
 
