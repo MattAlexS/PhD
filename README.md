@@ -11,6 +11,7 @@ This is a pesonal repository used to structure my PhD thesis work and associated
 
 <!-- CHAPTER 2 -->
 ## Chapter 2 - Random Point Generation Problems
+
 ![Alt text](Chapter2/3DSimplexPackingSizes.png "3D Simplex Packing Sizes")
 
 
@@ -19,12 +20,8 @@ This is a pesonal repository used to structure my PhD thesis work and associated
 <!-- CHAPTER 3  -->
 ## Chapter 3 - Analysis of Codon Bias Utilizing Anchor Clustering 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 
 
